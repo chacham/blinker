@@ -1,12 +1,29 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Blinker</title>
+</head>
 <body>
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <legend>Durations</legend>
+            <div class="pure-control-group">
+                <label for="first-duration">First color duration</label>
+                <input type="number" name="duration-input" id="duration-input-01" placeholder="duraion in ms" value="3000"
+                    onchange="updateDuration()" />
+                <span class="pure-form-message-inline">ms</span>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="second-duration">Second color duration</label>
+                <input type="number" name="duration-input" id="duration-input-02" placeholder="duraion in ms" value="200"
+                    onchange="updateDuration()" />
+                <span class="pure-form-message-inline">ms</span>
+            </div>
+        </fieldset>
+    </form>
 </body>
-<script>
-    const bodyElement = document.querySelector("body");
-    setInterval(() => {
-        bodyElement.style.background = 'white';
-        setTimeout(() => {
-            bodyElement.style.background = 'black';
-        }, 500);
-    }, 3000);
-</script>
+<script src="blinker.js"></script>
+</html>
