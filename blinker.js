@@ -1,3 +1,7 @@
+function getRandomColorCode() {
+    return Math.floor(Math.random() * 0xFFFFFF).toString(16)
+}
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -5,8 +9,8 @@ const app = new Vue({
         currentIndex: 0,
         currentColor: 'white',
         items: [
-            { duration: 3000, color: '#000000' },
-            { duration: 200, color: '#FFFFFF' },
+            { duration: 100, color: `#${getRandomColorCode()}` },
+            { duration: 100, color: `#${getRandomColorCode()}` },
         ],
     },
     methods: {
@@ -28,9 +32,18 @@ const app = new Vue({
         },
         onClick(mouseEvent) {
             const clickedElement = mouseEvent.path[0];
-            if (clickedElement.tagName != 'INPUT' && clickedElement.tagName != 'LABEL') {
+            if (!clickedElement.classList.contains('not-toggle-hide')) {
                 this.hidden = !this.hidden;
             }
+        },
+        onRemoveClick(index) {
+            if (this.items.length <= 1) {
+                return;
+            }
+            this.items.splice(index, 1);
+        },
+        onAddClick() {
+            this.items.push({ duration: 100, color: `#${getRandomColorCode()}` });
         },
     },
     mounted() {

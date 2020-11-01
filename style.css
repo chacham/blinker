@@ -16,3 +16,11 @@ html, body {
     background-color: #f4f4f2;
     width: max-content;
 }
+
+.remove-item-button:hover {
+    cursor: pointer;
+}
+
+.add-item-button:hover {
+    cursor: pointer;
+}

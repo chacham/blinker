@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://unpkg.com/css.gg/icons/all.css'>
     <link rel="stylesheet" href="style.css">
     <title>Blinker</title>
 </head>
@@ -12,18 +13,26 @@
             <form id="main-form" class="pure-form pure-form-aligned" :hidden="hidden">
                 <fieldset v-for="(item, i) in items">
                     <legend>
-                        <span>{{ getIndexTitle(i + 1) }}</span>
+                        <span><strong>{{ getIndexTitle(i + 1) }}</strong></span>
+                        <span style="float:right;">
+                            <i class="gg-close-o remove-item-button not-toggle-hide" @click="onRemoveClick(i)"></i>
+                        </span>
                     </legend>
                     <div class="pure-control-group">
-                        <label :for="`item-duration-${i}`">Duration</label>
-                        <input type="number" :id="`item-duration-${i}`" placeholder="duration in ms" v-model="item.duration" />
+                        <label :for="`item-duration-${i}`" class="not-toggle-hide">Duration</label>
+                        <input type="number" class="not-toggle-hide" placeholder="duration in ms"
+                               :id="`item-duration-${i}`" v-model="item.duration" />
                         <span class="pure-form-message-inline">ms</span>
                     </div>
                     <div class="pure-control-group">
-                        <label :for="`item-color-${i}`">Color</label>
-                        <input type='color' :id="`item-color-${i}`" placeholder="color"  v-model="item.color" />
+                        <label :for="`item-color-${i}`" class="not-toggle-hide">Color</label>
+                        <input type='color' class="not-toggle-hide" placeholder="color"
+                               :id="`item-color-${i}`" v-model="item.color" />
                     </div>
                 </fieldset>
+                <div align="right">
+                    <i class="gg-add-r add-item-button not-toggle-hide" @click='onAddClick'></i>
+                </div>
             </form>
         </div>
     </div>
