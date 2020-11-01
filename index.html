@@ -6,24 +6,23 @@
     <title>Blinker</title>
 </head>
 <body>
-    <form class="pure-form pure-form-aligned">
-        <fieldset>
-            <legend>Durations</legend>
-            <div class="pure-control-group">
-                <label for="first-duration">First color duration</label>
-                <input type="number" name="duration-input" id="duration-input-01" placeholder="duraion in ms" value="3000"
-                    onchange="updateDuration()" />
-                <span class="pure-form-message-inline">ms</span>
-            </div>
-
-            <div class="pure-control-group">
-                <label for="second-duration">Second color duration</label>
-                <input type="number" name="duration-input" id="duration-input-02" placeholder="duraion in ms" value="200"
-                    onchange="updateDuration()" />
-                <span class="pure-form-message-inline">ms</span>
-            </div>
-        </fieldset>
-    </form>
+    <div id="app" v-bind:style="{ 'background-color': currentColor }">
+        <form id="main-form" class="pure-form pure-form-aligned">
+            <fieldset v-for="(item, i) in items">
+                <legend>{{ getIndexTitle(i + 1) }}</legend>
+                <div class="pure-control-group">
+                    <label :for="`item-duration-${i}`">Duration</label>
+                    <input type="number" :id="`item-duration-${i}`" placeholder="duration in ms" v-model="item.duration" />
+                    <span class="pure-form-message-inline">ms</span>
+                </div>
+                <div class="pure-control-group">
+                    <label :for="`item-color-${i}`">Color</label>
+                    <input type='color' :id="`item-color-${i}`" placeholder="color"  v-model="item.color" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.js"></script>
+    <script src="blinker.js" defer></script>
 </body>
-<script src="blinker.js"></script>
 </html>
