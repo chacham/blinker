@@ -6,21 +6,25 @@
     <title>Blinker</title>
 </head>
 <body>
-    <div id="app" v-bind:style="{ 'background-color': currentColor }">
-        <form id="main-form" class="pure-form pure-form-aligned">
-            <fieldset v-for="(item, i) in items">
-                <legend>{{ getIndexTitle(i + 1) }}</legend>
-                <div class="pure-control-group">
-                    <label :for="`item-duration-${i}`">Duration</label>
-                    <input type="number" :id="`item-duration-${i}`" placeholder="duration in ms" v-model="item.duration" />
-                    <span class="pure-form-message-inline">ms</span>
-                </div>
-                <div class="pure-control-group">
-                    <label :for="`item-color-${i}`">Color</label>
-                    <input type='color' :id="`item-color-${i}`" placeholder="color"  v-model="item.color" />
-                </div>
-            </fieldset>
-        </form>
+    <div id="app" @click="onClick" :style="{ 'background-color': currentColor }">
+        <div id="main-container">
+            <form id="main-form" class="pure-form pure-form-aligned" :hidden="hidden">
+                <fieldset v-for="(item, i) in items">
+                    <legend>
+                        <span>{{ getIndexTitle(i + 1) }}</span>
+                    </legend>
+                    <div class="pure-control-group">
+                        <label :for="`item-duration-${i}`">Duration</label>
+                        <input type="number" :id="`item-duration-${i}`" placeholder="duration in ms" v-model="item.duration" />
+                        <span class="pure-form-message-inline">ms</span>
+                    </div>
+                    <div class="pure-control-group">
+                        <label :for="`item-color-${i}`">Color</label>
+                        <input type='color' :id="`item-color-${i}`" placeholder="color"  v-model="item.color" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.js"></script>
     <script src="blinker.js" defer></script>

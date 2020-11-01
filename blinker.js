@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#app',
     data: {
+        hidden: false,
         currentIndex: 0,
         currentColor: 'white',
         items: [
@@ -15,7 +16,7 @@ const app = new Vue({
             if (last == 1) return `${index}st!`;
             if (last == 2) return `${index}nd!`;
             if (last == 3) return `${index}rd!`;
-            return `${index}th!`
+            return `${index}th!`;
         },
         blink() {
             const currentItem = this.items[this.currentIndex];
@@ -24,6 +25,12 @@ const app = new Vue({
                 this.currentIndex = (this.currentIndex + 1) % this.items.length;
                 this.blink();
             }, currentItem.duration);
+        },
+        onClick(mouseEvent) {
+            const clickedElement = mouseEvent.path[0];
+            if (clickedElement.tagName != 'INPUT' && clickedElement.tagName != 'LABEL') {
+                this.hidden = !this.hidden;
+            }
         },
     },
     mounted() {

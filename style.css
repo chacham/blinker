@@ -6,6 +6,13 @@ html, body {
     min-height: 100%;
 }
 
+#main-container {
+    padding: 1em;
+}
+
 #main-form {
     padding: 1em;
+    border-radius: 1em;
+    background-color: #f4f4f2;
+    width: max-content;
 }
