@@ -31,10 +31,14 @@ const app = new Vue({
             }, currentItem.duration);
         },
         onClick(mouseEvent) {
-            const clickedElement = mouseEvent.path[0];
-            if (!clickedElement.classList.contains('not-toggle-hide')) {
-                this.hidden = !this.hidden;
+            var currentElement = (mouseEvent.target) ? mouseEvent.target : mouseEvent.srcElement;
+            while (currentElement) {
+                if (currentElement.classList.contains('not-toggle-hide')) {
+                    return;
+                }
+                currentElement = currentElement.parentElement;
             }
+            this.hidden = !this.hidden;
         },
         onRemoveClick(index) {
             if (this.items.length <= 1) {
