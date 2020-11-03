@@ -10,28 +10,28 @@
 <body>
     <div id="app" @click="onClick" :style="{ 'background-color': currentColor }">
         <div id="main-container">
-            <form id="main-form" class="pure-form pure-form-aligned" :hidden="hidden">
+            <form id="main-form" class="pure-form pure-form-aligned not-toggle-hide" :hidden="hidden">
                 <fieldset v-for="(item, i) in items">
                     <legend>
                         <span><strong>{{ getIndexTitle(i + 1) }}</strong></span>
                         <span style="float:right;">
-                            <i class="gg-close-o remove-item-button not-toggle-hide" @click="onRemoveClick(i)"></i>
+                            <i class="gg-close-o remove-item-button" @click="onRemoveClick(i)"></i>
                         </span>
                     </legend>
                     <div class="pure-control-group">
-                        <label :for="`item-duration-${i}`" class="not-toggle-hide">Duration</label>
-                        <input type="number" class="not-toggle-hide" placeholder="duration in ms"
+                        <label :for="`item-duration-${i}`">Duration</label>
+                        <input type="number" placeholder="duration in ms"
                                :id="`item-duration-${i}`" v-model="item.duration" />
                         <span class="pure-form-message-inline">ms</span>
                     </div>
                     <div class="pure-control-group">
-                        <label :for="`item-color-${i}`" class="not-toggle-hide">Color</label>
-                        <input type='color' class="not-toggle-hide" placeholder="color"
+                        <label :for="`item-color-${i}`">Color</label>
+                        <input type='color' placeholder="color"
                                :id="`item-color-${i}`" v-model="item.color" />
                     </div>
                 </fieldset>
                 <div align="right">
-                    <i class="gg-add-r add-item-button not-toggle-hide" @click='onAddClick'></i>
+                    <i class="gg-add-r add-item-button" @click='onAddClick'></i>
                 </div>
             </form>
         </div>
